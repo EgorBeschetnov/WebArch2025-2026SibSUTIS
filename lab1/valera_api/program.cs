@@ -1,4 +1,4 @@
-using ValeraAPI.Services;
+using ValeraAPI.services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,8 @@ builder.Services.AddScoped<IValeraService, ValeraService>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+// Явно включаем Swagger для Production
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();

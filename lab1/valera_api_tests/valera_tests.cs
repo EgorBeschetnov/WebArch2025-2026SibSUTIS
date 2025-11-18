@@ -1,5 +1,5 @@
 using Xunit;
-using ValeraAPI.Models;
+using ValeraAPI.models;
 
 namespace ValeraAPI.Tests
 {

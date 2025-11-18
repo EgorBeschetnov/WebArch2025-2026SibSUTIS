@@ -2,6 +2,6 @@ namespace ValeraAPI.DTOs
 {
     public class ActionRequestDTO
     {
-        public string Action { get; set; }
+        public required string Action { get; set; }
     }
 }

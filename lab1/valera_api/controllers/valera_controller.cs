@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ValeraAPI.Services;
+using ValeraAPI.services;
 using ValeraAPI.DTOs;
 
 namespace ValeraAPI.Controllers
@@ -8,7 +8,7 @@ namespace ValeraAPI.Controllers
     [Route("api/[controller]")]
     public class ValeraController : ControllerBase
     {
-        private readonly IvaleraService _valeraService;
+        private readonly IValeraService _valeraService;
 
         public ValeraController(IValeraService valeraService)
         {
@@ -42,7 +42,7 @@ namespace ValeraAPI.Controllers
         }
 
         [HttpPost("reset")]
-        public ActionResult<ValeraSteateDTO> Reset()
+        public ActionResult<ValeraStateDTO> Reset()
         {
             _valeraService.Reset();
             return Ok(_valeraService.GetState());

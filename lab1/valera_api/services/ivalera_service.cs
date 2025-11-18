@@ -8,6 +8,6 @@ namespace ValeraAPI.services
 
         ValeraStateDTO ExecuteAction(string Action);
 
-        coid Reset();
+        void Reset();
     }
 }

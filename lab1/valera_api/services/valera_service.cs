@@ -1,18 +1,11 @@
-using ValeraAPI.Models;
+using ValeraAPI.models;
 using ValeraAPI.DTOs;
 
 namespace ValeraAPI.services
 {
-    public interface IValeraService
-    {
-        ValeraStateDTO GetState();
-        ValeraStateDTO ExecuteAction(string Action);
-        void Reset();
-    }
-
     public class ValeraService : IValeraService
     {
-        private ValeraService _valera;
+        private Valera _valera;
 
         public ValeraService()
         {
@@ -41,22 +34,22 @@ namespace ValeraAPI.services
                     success = _valera.GoToWork();
                     break;
                 case "nature":
-                    success = _valera.ContemplateNature();
+                    _valera.ContemplateNature();
                     break;
                 case "tv":
-                    success = _valera.DrinkWineAndWatchTV();
+                    _valera.DrinkWineAndWatchTV();
                     break;
                 case "bar":
-                    success = _valera.GoToBar();
+                    _valera.GoToBar();
                     break;
                 case "marginals":
-                    success = _valera.DrinkWithMarginals();
+                    _valera.DrinkWithMarginals();
                     break;
                 case "sing":
-                    success = _valera.SingInSubway();
+                    _valera.SingInSubway();
                     break;
                 case "sleep":
-                    success = _valera.Sleep();
+                    _valera.Sleep();
                     break;
                 default:
                     throw new ArgumentException($"Unknown action: {Action}");

@@ -1,4 +1,4 @@
-namespace valera_api.models
+namespace ValeraAPI.models
 {
 	public class Valera
 	{
@@ -8,13 +8,13 @@ namespace valera_api.models
 		public int Fatigue { get; private set; }
 		public int Money { get; private set; }
 
-		public Valera(int Health = 100, int Mana = 0, int Cheerfulness = 0, int Fatigue = 0, int Money = 100)
+		public Valera(int health = 100, int mana = 0, int cheerfulness = 0, int fatigue = 0, int money = 100)
 		{
 			Health = ValidateRange(health, 0, 100);
 			Mana = ValidateRange(mana, 0, 100);
 			Cheerfulness = ValidateRange(cheerfulness, -10, 10);
-			Fatigue - ValidateRange(fatigue, 0, 100);
-			Money = money;
+			Fatigue = ValidateRange(fatigue, 0, 100);
+			Money = ValidateRange(money, 0, 1000);
 		}
 
 		public bool GoToWork()
@@ -36,7 +36,7 @@ namespace valera_api.models
 			Fatigue = ValidateRange( Fatigue + 10, 0, 100);
 		}
 
-		public void DrinkWinAndWatchTV()
+		public void DrinkWineAndWatchTV()
 		{
 			Cheerfulness = ValidateRange(Cheerfulness -1, -10, 10);
 			Mana = ValidateRange(Mana + 30, 0, 100);
@@ -54,7 +54,7 @@ namespace valera_api.models
 			Money -= 100;
 		}
 
-		public void DronkWithMarginals()
+		public void DrinkWithMarginals()
 		{
 			Cheerfulness = ValidateRange(Cheerfulness + 5, -10, 10);
 			Health = ValidateRange(Health - 80, 0, 100);
