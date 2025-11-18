@@ -6,21 +6,37 @@ namespace ValeraAPI.Tests
     public class ValeraTests
     {
         [Fact]
-        public void GoToWork_Success_WhenonditionsMet()
+        public void GoToWork_Success_WhenсonditionsMet()
         {
-            var valera = new ValeraAPI(mana: 30, fatique: 5);
+            var valera = new Valera(mana: 30, fatigue: 5, cheerfulness: 0);
             var result = valera.GoToWork();
             Assert.True(result);
             Assert.Equal(0, valera.Mana);
-            Assert.Equal(75, valera.Fatigue);
-            Assert.Equal(100, valera.Money);
-            Assert.Equal(-5, valera.Cheerfulness);
+            Assert.Equal(15, valera.Fatigue);
+            Assert.Equal(200, valera.Money);
+            Assert.Equal(1, valera.Cheerfulness);
         }
 
         [Fact]
         public void GoToWork_Fails_WhenManaTooHigh()
         {
-            var valera = new Valera();
+            var valera = new Valera(mana: 51, fatigue: 9);
+            var result = valera.GoToWork();
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void GoToWork_Fails_WhenFatigueTooHigh()
+        {
+            var valera = new Valera(mana: 49, fatigue: 10);
+            var result = valera.GoToWork();
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void GoToWork_Fails_WhenManaAndFatigueTooHigh()
+        {
+            var valera = new Valera(mana: 51, fatigue: 10);
             var result = valera.GoToWork();
             Assert.False(result);
         }
@@ -31,8 +47,8 @@ namespace ValeraAPI.Tests
             var valera = new Valera();
             valera.ContemplateNature();
             Assert.Equal(1, valera.Cheerfulness);
-            Assert.Equal(90, valera.Mana);
-            Assert.Equeal(10, valera.Fatigue);
+            Assert.Equal(0, valera.Mana);
+            Assert.Equal(10, valera.Fatigue);
         }
 
         [Fact]
@@ -61,7 +77,7 @@ namespace ValeraAPI.Tests
         {
             var valera = new Valera(mana: 50, money: 0);
             valera.SingInSubway();
-            Assery.Equal(60, valera.Money);
+            Assert.Equal(60, valera.Money);
         }
 
         [Fact]
@@ -70,12 +86,12 @@ namespace ValeraAPI.Tests
             var valera = new Valera();
             for (int i = 0; i < 10; i++)
             {
-                valera.DrinkingWithMarginals();
+                valera.DrinkWithMarginals();
             }
             Assert.InRange(valera.Health, 0, 100);
             Assert.InRange(valera.Mana, 0, 100);
             Assert.InRange(valera.Cheerfulness, -10, 10);
-            Assert.InRange(valera.Farigue, 0, 100);
+            Assert.InRange(valera.Fatigue, 0, 100);
         }
     }
 }
