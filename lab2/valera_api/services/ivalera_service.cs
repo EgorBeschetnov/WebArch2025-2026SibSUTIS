@@ -4,10 +4,10 @@ namespace ValeraAPI.services
 {
     public interface IValeraService
     {
-        ValeraStateDTO GetState();
+        Task<ValeraStateDTO> GetStateAsync(int valeraId = 1);
 
-        ValeraStateDTO ExecuteAction(string Action);
+        Task<ValeraStateDTO> ExecuteActionAsync(string Action, int valeraId = 1);
 
-        void Reset();
+        Task ResetAsync(int valeraId = 1);
     }
 }
