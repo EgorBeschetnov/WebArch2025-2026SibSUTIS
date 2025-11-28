@@ -16,17 +16,17 @@ namespace ValeraAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<ValeraStateDTO> GetState()
+        public async Task<ActionResult<ValeraStateDTO>> GetState()
         {
-            return Ok(_valeraService.GetState());
+            return Ok(await _valeraService.GetState());
         }
 
         [HttpPost("Action")]
-        public ActionResult<ValeraStateDTO> ExecuteAction([FromBody] ActionRequestDTO request)
+        public async Task<ActionResult<ValeraStateDTO>> ExecuteAction([FromBody] ActionRequestDTO request)
         {
             try
             {
-                var result = _valeraService.ExecuteAction(request.Action);
+                var result = await _valeraService.ExecuteAction(request.Action);
                 return Ok(result);
             }
 
@@ -42,10 +42,10 @@ namespace ValeraAPI.Controllers
         }
 
         [HttpPost("reset")]
-        public ActionResult<ValeraStateDTO> Reset()
+        public async Task<ActionResult<ValeraStateDTO>> Reset()
         {
-            _valeraService.Reset();
-            return Ok(_valeraService.GetState());
+            await _valeraService.Reset();
+            return Ok(await _valeraService.GetState());
         }
 
     }
