@@ -7,7 +7,7 @@ namespace ValeraAPI.services
 {
     public class ValeraService : IValeraService
     {
-        private readonly AppDbContext _valera
+        private readonly AppDbContext _valera;
 
         public ValeraService(AppDbContext valera)
         {
@@ -16,7 +16,7 @@ namespace ValeraAPI.services
 
         public async Task<ValeraStateDTO> GetStateAsync(int valeraId = 1)
         {
-            var valera = await GetOrCreateValeraAsync(valeraId)
+            var valera = await GetOrCreateValeraAsync(valeraId);
             return MapToDTO(valera);
             
         }
@@ -105,11 +105,11 @@ namespace ValeraAPI.services
         {
             return new ValeraStateDTO
             {
-                Health = valera.Health;
-                Mana = valera.Mana;
-                Cheerfulness = valera.Cheerfulness;
-                Fatigue = valera.Fatigue;
-                Money = valera.Money;
+                Health = valera.Health,
+                Mana = valera.Mana,
+                Cheerfulness = valera.Cheerfulness,
+                Fatigue = valera.Fatigue,
+                Money = valera.Money,
             };
         }
     }
