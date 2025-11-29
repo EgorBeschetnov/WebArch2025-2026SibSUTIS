@@ -3,11 +3,11 @@ namespace ValeraAPI.models
 	public class Valera
 	{
 		public int Id { get; set; }
-		public int Health { get; private set; }
-		public int Mana { get; private set; }
-		public int Cheerfulness { get; private set; }
-		public int Fatigue { get; private set; }
-		public int Money { get; private set; }
+		public int Health { get; set; }
+		public int Mana { get; set; }
+		public int Cheerfulness { get; set; }
+		public int Fatigue { get; set; }
+		public int Money { get; set; }
 
 		public Valera()
         {

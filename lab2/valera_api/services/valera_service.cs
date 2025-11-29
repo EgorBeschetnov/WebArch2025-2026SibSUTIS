@@ -29,31 +29,31 @@ namespace ValeraAPI.services
             switch (Action.ToLower())
             {
                 case "work":
-                    success = valera.GoToWork();
+                    valera.GoToWork();
                     break;
 
                 case "nature":
-                    success = valera.ContemplateNature();
+                    valera.ContemplateNature();
                     break;
 
                 case "tv":
-                    success = valera.DrinkWineAndWatchTV();
+                    valera.DrinkWineAndWatchTV();
                     break;
 
                 case "bar":
-                    success = valera.GoToBar();
+                    valera.GoToBar();
                     break;
 
                 case "marginals":
-                    success = valera.DrinkWithMarginals();
+                    valera.DrinkWithMarginals();
                     break;
 
                 case "sing":
-                    success = valera.SingInSubway();
+                    valera.SingInSubway();
                     break;
 
                 case "sleep":
-                    success = valera.Sleep();
+                    valera.Sleep();
                     break;
 
                 default:
@@ -70,19 +70,19 @@ namespace ValeraAPI.services
             _valera.ValeraS.Update(valera);
             await _valera.SaveChangesAsync();
 
-            return MapToData(valera);
+            return MapToDTO(valera);
         }
 
         public async Task ResetAsync(int valeraId = 1)
         {
-            var valera = await GetOrCreateValeraAsync();
+            var valera = await GetOrCreateValeraAsync(valeraId);
 
             var newValera = new Valera();
-            Valera.Health = newValera.Health;
-            Valera.Mana = newValera.Mana;
-            Valera.Cheerfulness = newValera.Cheerfulness;
-            Valera.Fatigue = newValera.Fatigue;
-            Valera.Money = newValera.Money;
+            valera.Health = newValera.Health;
+            valera.Mana = newValera.Mana;
+            valera.Cheerfulness = newValera.Cheerfulness;
+            valera.Fatigue = newValera.Fatigue;
+            valera.Money = newValera.Money;
 
             _valera.ValeraS.Update(valera);
             await _valera.SaveChangesAsync();

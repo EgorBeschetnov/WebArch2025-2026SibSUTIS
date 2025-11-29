@@ -18,7 +18,7 @@ namespace ValeraAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<ValeraStateDTO>> GetState()
         {
-            return Ok(await _valeraService.GetState());
+            return Ok(await _valeraService.GetStateAsync());
         }
 
         [HttpPost("Action")]
@@ -26,7 +26,7 @@ namespace ValeraAPI.Controllers
         {
             try
             {
-                var result = await _valeraService.ExecuteAction(request.Action);
+                var result = await _valeraService.ExecuteActionAsync(request.Action);
                 return Ok(result);
             }
 
@@ -44,8 +44,8 @@ namespace ValeraAPI.Controllers
         [HttpPost("reset")]
         public async Task<ActionResult<ValeraStateDTO>> Reset()
         {
-            await _valeraService.Reset();
-            return Ok(await _valeraService.GetState());
+            await _valeraService.ResetAsync();
+            return Ok(await _valeraService.GetStateAsync());
         }
 
     }

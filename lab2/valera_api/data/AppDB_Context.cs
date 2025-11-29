@@ -15,7 +15,7 @@ namespace ValeraAPI.Data
         {
             modelBuilder.Entity<Valera>(entity =>
             {
-                entity.HashKey(v => v.id);
+                entity.HasKey(v => v.Id);
                 entity.Property(v => v.Health).IsRequired();
                 entity.Property(v => v.Mana).IsRequired();
                 entity.Property(v => v.Cheerfulness).IsRequired();
